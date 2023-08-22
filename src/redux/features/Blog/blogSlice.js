@@ -16,6 +16,9 @@ const blogSlice = createSlice({
     hitSaved: (state) => {
       state.data.isSaved = true;
     },
+    hitUnSaved: (state) => {
+      state.data.isSaved = false;
+    },
     hitLiked: (state) => {
       state.data.likes = state.data.likes + 1;
     },
@@ -44,4 +47,4 @@ const blogSlice = createSlice({
 });
 
 export default blogSlice.reducer;
-export const { hitSaved, hitLiked } = blogSlice.actions;
+export const { hitSaved, hitLiked, hitUnSaved } = blogSlice.actions;

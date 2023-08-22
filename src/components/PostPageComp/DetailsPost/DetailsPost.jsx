@@ -1,7 +1,11 @@
 import React from "react";
 import { FaRegBookmark, FaRegThumbsUp } from "react-icons/fa";
 import { useDispatch } from "react-redux";
-import { hitLiked, hitSaved } from "../../../redux/features/Blog/blogSlice";
+import {
+  hitLiked,
+  hitSaved,
+  hitUnSaved,
+} from "../../../redux/features/Blog/blogSlice";
 
 const DetailsPost = ({ blog }) => {
   const dispatch = useDispatch();
@@ -36,7 +40,9 @@ const DetailsPost = ({ blog }) => {
             {/* <!-- handle save on button click --> */}
             {/* <!-- use ".active" className and "Saved" text  if a post is saved, other wise "Save" --> */}
             <button
-              onClick={() => dispatch(hitSaved())}
+              onClick={() => {
+                blog.isSaved ? dispatch(hitUnSaved()) : dispatch(hitSaved());
+              }}
               className={`${
                 blog?.isSaved
                   ? "active save-btn flex items-center space-x-1"
