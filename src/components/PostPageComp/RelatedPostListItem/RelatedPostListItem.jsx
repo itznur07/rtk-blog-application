@@ -1,24 +1,26 @@
 import React from "react";
-import gitImg from "../../../assets/images/git.webp";
+import { Link } from "react-router-dom";
 
-const RelatedPostListItem = () => {
+const RelatedPostListItem = ({ blog }) => {
   return (
     <div>
       <div className='card'>
-        <a href='post.html'>
-          <img src={gitImg} className='card-image' alt='git-image' />
-        </a>
+        <Link to={`/post/${blog.id}`}>
+          <img src={blog.image} className='card-image' alt='git-image' />
+        </Link>
         <div className='p-4'>
-          <a
-            href='post.html'
+          <Link
+            to={`/post/${blog.id}`}
             className='text-lg post-title lws-RelatedPostTitle'
           >
-            Top Github Alternatives
-          </a>
+            {blog.title}
+          </Link>
           <div className='mb-0 tags'>
-            <span>#python,</span> <span>#tech,</span> <span>#git</span>
+            {blog.tags.map((tag, i) => (
+              <span key={i + 1}>#{tag} </span>
+            ))}
           </div>
-          <p>2010-03-27</p>
+          <p>{blog.createAt}</p>
         </div>
       </div>
     </div>

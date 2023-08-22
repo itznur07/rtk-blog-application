@@ -13,14 +13,14 @@ const Post = () => {
 
   useEffect(() => {
     dispatch(getBlog(id));
-  }, [dispatch]);
+  }, [dispatch, id]);
 
   return (
     <>
       <GoBackButton />
       <section className='post-page-container'>
         <DetailsPost blog={data} />
-        <RelatedPostList />
+        <RelatedPostList blog={data} />
       </section>
     </>
   );
