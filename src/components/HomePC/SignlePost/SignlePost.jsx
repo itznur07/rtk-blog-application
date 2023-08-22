@@ -6,7 +6,7 @@ const SignlePost = ({ blog }) => {
   return (
     <div>
       <div className='lws-card'>
-        <Link to='/post'>
+        <Link to={`/post/${blog.id}`}>
           <img src={blog.image} className='lws-card-image' alt='' />
         </Link>
         <div className='p-4'>
@@ -16,7 +16,7 @@ const SignlePost = ({ blog }) => {
               <FaRegThumbsUp /> <span>{blog.likes}</span>
             </p>
           </div>
-          <Link to='/post' className='lws-postTitle'>
+          <Link to={`/post/${blog.id}`} className='lws-postTitle'>
             {" "}
             {blog.title}
           </Link>

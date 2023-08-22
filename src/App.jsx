@@ -2,7 +2,7 @@ import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
 import "./App.css";
 import Navbar from "./components/Navbar/Navbar";
 import Home from "./pages/Home/Home";
-import Post from "./pages/post/Post";
+import Post from "./pages/Post/Post";
 
 function App() {
   return (
