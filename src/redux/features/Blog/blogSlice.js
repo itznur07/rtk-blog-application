@@ -5,12 +5,22 @@ const initialState = {
   isLoading: false,
   isError: false,
   error: "",
-  data: [],
+  data: {},
 };
 
 const blogSlice = createSlice({
   name: "blog",
   initialState,
+
+  reducers: {
+    hitSaved: (state) => {
+      state.data.isSaved = true;
+    },
+    hitLiked: (state) => {
+      state.data.likes = state.data.likes + 1;
+    },
+  },
+
   extraReducers: (builder) => {
     builder.addCase(getBlog.pending, (state) => {
       state.isLoading = true;
@@ -34,3 +44,4 @@ const blogSlice = createSlice({
 });
 
 export default blogSlice.reducer;
+export const { hitSaved, hitLiked } = blogSlice.actions;

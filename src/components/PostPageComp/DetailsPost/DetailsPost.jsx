@@ -1,7 +1,11 @@
 import React from "react";
 import { FaRegBookmark, FaRegThumbsUp } from "react-icons/fa";
+import { useDispatch } from "react-redux";
+import { hitLiked, hitSaved } from "../../../redux/features/Blog/blogSlice";
 
 const DetailsPost = ({ blog }) => {
+  const dispatch = useDispatch();
+
   return (
     <div>
       <main className='post'>
@@ -23,6 +27,7 @@ const DetailsPost = ({ blog }) => {
           <div className='btn-group'>
             {/* <!-- handle like on button click --> */}
             <button
+              onClick={() => dispatch(hitLiked())}
               className='like-btn flex items-center space-x-1'
               id='lws-singleLinks'
             >
@@ -31,6 +36,7 @@ const DetailsPost = ({ blog }) => {
             {/* <!-- handle save on button click --> */}
             {/* <!-- use ".active" className and "Saved" text  if a post is saved, other wise "Save" --> */}
             <button
+              onClick={() => dispatch(hitSaved())}
               className={`${
                 blog?.isSaved
                   ? "active save-btn flex items-center space-x-1"
